@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OddsLab | Dashboard</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {background: "#fbf9fa", "error-container": "#ffdad6", "on-secondary": "#ffffff", "outline-variant": "#c4c6cd", "secondary-fixed": "#e4e2dd", "on-primary-fixed": "#0a1d2d", outline: "#74777d", "inverse-surface": "#303032", "on-primary": "#ffffff", "inverse-on-surface": "#f2f0f2", "surface-variant": "#e4e2e3", "on-tertiary-fixed-variant": "#614018", "on-surface-variant": "#43474c", "surface-container": "#efedef", "secondary-fixed-dim": "#c8c6c2", "on-tertiary": "#ffffff", "on-secondary-container": "#63635f", "surface-container-highest": "#e4e2e3", "primary-fixed": "#d2e4fb", "on-primary-fixed-variant": "#37485b", "on-error-container": "#93000a", "tertiary-fixed": "#ffdcbc", "on-secondary-fixed-variant": "#474744", "surface-container-high": "#e9e7e9", "surface-dim": "#dbd9db", "surface-bright": "#fbf9fa", "surface-tint": "#4f6073", "on-tertiary-fixed": "#2c1700", secondary: "#5f5e5b", "on-surface": "#1b1c1d", "on-tertiary-container": "#cd9f6f", "on-secondary-fixed": "#1b1c19", "tertiary-container": "#56360f", "on-error": "#ffffff", "primary-fixed-dim": "#b6c8df", "surface-container-lowest": "#ffffff", "inverse-primary": "#b6c8df", primary: "#172839", "primary-container": "#2d3e50", surface: "#fbf9fa", "tertiary-fixed-dim": "#efbd8a", "secondary-container": "#e1dfdb", "surface-container-low": "#f5f3f4", "on-primary-container": "#97a9be", tertiary: "#3c2100", "on-background": "#1b1c1d", error: "#ba1a1a"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, spacing: {"margin-desktop": "48px", xs: "4px", gutter: "24px", md: "24px", base: "8px", xl: "64px", "margin-mobile": "16px", sm: "12px", lg: "40px"}, fontFamily: {"headline-lg-mobile": ["Inter"], "label-xs": ["Inter"], "headline-md": ["Inter"], "body-sm": ["Inter"], "body-md": ["Inter"], "headline-sm": ["Inter"], "headline-lg": ["Inter"], headline: ["Inter"], display: ["Inter"], body: ["Inter"], label: ["Inter"]}, fontSize: {"headline-lg-mobile": ["28px", {lineHeight: "1.2", fontWeight: "700"}], "label-xs": ["12px", {lineHeight: "1.2", letterSpacing: "0.02em", fontWeight: "500"}], "headline-md": ["28px", {lineHeight: "1.3", letterSpacing: "-0.01em", fontWeight: "600"}], "body-sm": ["14px", {lineHeight: "1.5", fontWeight: "400"}], "body-md": ["16px", {lineHeight: "1.6", fontWeight: "400"}], "headline-sm": ["20px", {lineHeight: "1.4", fontWeight: "600"}], "headline-lg": ["36px", {lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700"}]}}}};</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fbf9fa; /* Warm Cream background anchor */
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .chart-gradient {
+            background: linear-gradient(180deg, rgba(23, 40, 57, 0.1) 0%, rgba(251, 249, 250, 0) 100%);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopNavBar (Shared Component) -->
+<nav class="bg-primary dark:bg-primary text-on-primary dark:text-on-primary font-body-md text-body-md docked full-width top-0 shadow-sm flex justify-between items-center w-full px-margin-desktop py-4 sticky z-50">
+<div class="flex items-center gap-8">
+<span class="font-headline-sm text-headline-sm font-bold text-on-primary">OddsLab</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-on-primary-container font-medium hover:opacity-80 transition-opacity" href="#">Markets</a>
+<a class="text-on-primary-container font-medium hover:opacity-80 transition-opacity" href="#">Learn</a>
+<a class="text-on-primary-container font-medium hover:opacity-80 transition-opacity" href="#">Leaderboard</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-primary hover:opacity-80 transition-opacity">notifications</button>
+<div class="flex items-center gap-2 bg-primary-container px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span class="text-on-primary font-medium">Terminal v1.2</span>
+</div>
+</div>
+</nav>
+<!-- Sidebar (Shared Component SideNavBar) -->
+<aside class="bg-surface-container-low dark:bg-surface-container-low h-full w-64 fixed left-0 top-[72px] border-r border-outline-variant flex flex-col h-screen p-md space-y-2 z-40">
+<div class="mb-8 px-4">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a strategic financial analyst in a modern office, wearing a dark blazer, set against a softly blurred background of architectural glass and minimalist interior design. The lighting is soft and natural, emphasizing a calm and intelligent persona within a sophisticated, clean UI environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4M1BZD79ieqGUmOWBNSGh_kddy6rey59knDHcffqoLSe_pWP5UrLixD15t8VUYthu9MYIkAYf7OBqQiic37R_AC18s2Yc-qCupzoDwqjCewx6ohE9-GS0c-1ftRNlNgxA4LXrqAjgLN_O29Yj5Vnx1H5kIpbauSyH89SM1tum0Owbb8IGm6_uIsoCVt72M-3n5qeySFdBBpzk1w4VprDp3fdpeXLAXei8OUZ-MnYClCwxIRikcsyn6MDVHl81s3ckxSwe4_KjFwnS"/>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-primary leading-none">Strategy Terminal</h3>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider font-bold">Sophisticated Tier</p>
+</div>
+</div>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3 Active: translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-xs text-label-xs">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-xs text-label-xs">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-xs text-label-xs">Transactions</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-xs text-label-xs">Settings</span>
+</a>
+</nav>
+<div class="pt-4 mt-auto border-t border-outline-variant space-y-1 pb-24">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-bold hover:opacity-90 transition-opacity mb-4">Deposit Funds</button>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-xs text-label-xs">Help Center</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-xs text-label-xs">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 p-margin-desktop bg-background min-h-screen">
+<div class="max-w-[1400px] mx-auto">
+<!-- Welcome Header -->
+<header class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-primary">Overview</h1>
+<p class="font-body-md text-body-md text-secondary">Strategic performance analysis for Q4 2024</p>
+</header>
+<!-- Portfolio Summary Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-lg">
+<div class="bg-primary text-on-primary p-md rounded-xl shadow-sm">
+<p class="font-label-xs text-label-xs opacity-70 mb-1">Total Balance</p>
+<h2 class="font-headline-lg text-headline-lg">$142,502.84</h2>
+<div class="mt-4 flex items-center gap-2 text-[#fbbf24]"> <!-- Amber Gold for value emphasis -->
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-body-sm text-body-sm font-semibold">+4.2% today</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl shadow-sm">
+<p class="font-label-xs text-label-xs text-secondary mb-1">Net P&amp;L (All Time)</p>
+<h2 class="font-headline-lg text-headline-lg text-[#10b981]">+$28,410.12</h2> <!-- Emerald for positive -->
+<p class="mt-4 font-body-sm text-body-sm text-on-surface-variant">Realized performance across 142 positions</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl shadow-sm">
+<p class="font-label-xs text-label-xs text-secondary mb-1">Success Rate</p>
+<div class="flex items-end justify-between">
+<h2 class="font-headline-lg text-headline-lg text-primary">68.4%</h2>
+<div class="flex items-center gap-1 text-on-surface-variant mb-1">
+<span class="font-label-xs text-label-xs font-bold">TOP 5%</span>
+</div>
+</div>
+<div class="mt-4 h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[68.4%]"></div>
+</div>
+</div>
+</section>
+<!-- Chart & Active Positions -->
+<div class="bento-grid">
+<!-- Performance Chart Container -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="p-md flex justify-between items-center border-b border-outline-variant">
+<h3 class="font-headline-sm text-headline-sm text-primary">Performance Trend</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1 rounded bg-secondary-container text-on-secondary-container font-label-xs text-label-xs">1W</button>
+<button class="px-3 py-1 rounded hover:bg-surface-variant text-secondary font-label-xs text-label-xs">1M</button>
+<button class="px-3 py-1 rounded hover:bg-surface-variant text-secondary font-label-xs text-label-xs">3M</button>
+<button class="px-3 py-1 rounded hover:bg-surface-variant text-secondary font-label-xs text-label-xs">YTD</button>
+</div>
+</div>
+<div class="p-md flex-grow min-h-[350px] relative flex flex-col justify-end">
+<!-- Abstract Visual Representation of a Line Chart -->
+<div class="absolute inset-0 flex items-end px-md pb-md overflow-hidden opacity-80 pointer-events-none">
+<svg class="w-full h-[80%]" preserveaspectratio="none" viewbox="0 0 800 300">
+<path d="M0,250 Q100,220 200,230 T400,150 T600,100 T800,20" fill="none" stroke="#172839" stroke-width="3"></path>
+<path d="M0,250 Q100,220 200,230 T400,150 T600,100 T800,20 V300 H0 Z" fill="url(#chartFill)"></path>
+<defs>
+<lineargradient id="chartFill" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#172839" stop-opacity="0.1"></stop>
+<stop offset="100%" stop-color="#172839" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<!-- Axis Labels -->
+<div class="flex justify-between w-full font-label-xs text-label-xs text-secondary border-t border-outline-variant pt-4">
+<span>SEP 01</span>
+<span>SEP 10</span>
+<span>SEP 20</span>
+<span>OCT 01</span>
+<span>OCT 10</span>
+<span>OCT 20</span>
+<span>NOV 01</span>
+</div>
+</div>
+</div>
+<!-- Strategic Summary / Insights (Side Bento) -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<div class="bg-primary-container text-on-primary-container p-md rounded-xl shadow-sm">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h4 class="font-headline-sm text-headline-sm text-on-primary">AI Insight</h4>
+</div>
+<p class="font-body-md text-body-md text-on-primary-container leading-relaxed">
+                            Your prediction accuracy in <span class="text-on-primary font-bold">Geopolitical Markets</span> has increased by 14% this month. Consider expanding your portfolio in this sector for optimal risk-adjusted returns.
+                        </p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl shadow-sm">
+<h4 class="font-headline-sm text-headline-sm text-primary mb-4">Risk Profile</h4>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between font-label-xs text-label-xs mb-1 text-secondary">
+<span>Volatility Index</span>
+<span>Low Risk</span>
+</div>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[35%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-xs text-label-xs mb-1 text-secondary">
+<span>Leverage Ratio</span>
+<span>1.2x</span>
+</div>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[15%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Positions Table -->
+<div class="col-span-12 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<div class="p-md border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-primary">Active Positions</h3>
+<button class="text-primary font-body-sm text-body-sm font-semibold hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low font-label-xs text-label-xs text-secondary uppercase tracking-wider">
+<tr>
+<th class="px-md py-4 font-bold">Market Description</th>
+<th class="px-md py-4 font-bold">Position</th>
+<th class="px-md py-4 font-bold text-right">Investment</th>
+<th class="px-md py-4 font-bold text-right">Potential Return</th>
+<th class="px-md py-4 font-bold text-right">Current Value</th>
+<th class="px-md py-4 font-bold text-center">Trend</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-sm">public</span>
+</div>
+<span class="font-body-md text-body-md font-semibold">2024 Global AI Regulation Accord reached by Dec 31st</span>
+</div>
+</td>
+<td class="px-md py-5">
+<span class="px-2 py-1 rounded-full bg-[#10b981]/10 text-[#10b981] font-label-xs text-label-xs font-bold">YES</span>
+</td>
+<td class="px-md py-5 text-right font-body-md text-body-md">$12,000.00</td>
+<td class="px-md py-5 text-right font-body-md text-body-md">$18,400.00</td>
+<td class="px-md py-5 text-right font-body-md text-body-md text-[#10b981] font-semibold">$14,210.00</td>
+<td class="px-md py-5">
+<div class="flex justify-center">
+<span class="material-symbols-outlined text-[#10b981]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-sm">rocket_launch</span>
+</div>
+<span class="font-body-md text-body-md font-semibold">SpaceX Starship orbital success attempt 6</span>
+</div>
+</td>
+<td class="px-md py-5">
+<span class="px-2 py-1 rounded-full bg-[#10b981]/10 text-[#10b981] font-label-xs text-label-xs font-bold">YES</span>
+</td>
+<td class="px-md py-5 text-right font-body-md text-body-md">$5,500.00</td>
+<td class="px-md py-5 text-right font-body-md text-body-md">$22,000.00</td>
+<td class="px-md py-5 text-right font-body-md text-body-md text-[#ba1a1a] font-semibold">$4,800.00</td>
+<td class="px-md py-5">
+<div class="flex justify-center">
+<span class="material-symbols-outlined text-[#ba1a1a]" style="font-variation-settings: 'FILL' 1;">trending_down</span>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-sm">currency_bitcoin</span>
+</div>
+<span class="font-body-md text-body-md font-semibold">Bitcoin Market Dominance &gt; 55% at 2024 close</span>
+</div>
+</td>
+<td class="px-md py-5">
+<span class="px-2 py-1 rounded-full bg-[#ba1a1a]/10 text-[#ba1a1a] font-label-xs text-label-xs font-bold">NO</span>
+</td>
+<td class="px-md py-5 text-right font-body-md text-body-md">$8,250.00</td>
+<td class="px-md py-5 text-right font-body-md text-body-md">$15,500.00</td>
+<td class="px-md py-5 text-right font-body-md text-body-md text-[#10b981] font-semibold">$10,400.00</td>
+<td class="px-md py-5">
+<div class="flex justify-center">
+<span class="material-symbols-outlined text-[#10b981]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="ml-64 bg-background dark:bg-background w-full py-xl border-t border-outline-variant flex flex-col md:flex-row justify-between items-center px-margin-desktop gap-md relative z-10">
+<div class="flex flex-col gap-2">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">OddsLab</span>
+<p class="font-body-sm text-body-sm text-secondary">© 2024 OddsLab Prediction Systems. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-secondary hover:text-primary font-body-sm text-body-sm transition-colors cursor-pointer" href="#">Terms of Service</a>
+<a class="text-secondary hover:text-primary font-body-sm text-body-sm transition-colors cursor-pointer" href="#">Privacy Policy</a>
+<a class="text-secondary hover:text-primary font-body-sm text-body-sm transition-colors cursor-pointer" href="#">Risk Disclosure</a>
+<a class="text-secondary hover:text-primary font-body-sm text-body-sm transition-colors cursor-pointer" href="#">Community Guidelines</a>
+</div>
+</footer>
+<script>
+        // Micro-interactions for navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if(link.getAttribute('href') === '#') e.preventDefault();
+            });
+        });
+
+        // Simple observer for scroll-based animations on bento cards
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.bento-grid > div, section > div').forEach(card => {
+            card.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-4');
+            observer.observe(card);
+        });
+    </script>
+</body></html>

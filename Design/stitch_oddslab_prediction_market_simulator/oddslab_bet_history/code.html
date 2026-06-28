@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OddsLab | Bet History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for a sophisticated feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fbf9fa;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c4c6cd;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #74777d;
+        }
+    </style>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {background: "#fbf9fa", "error-container": "#ffdad6", "on-secondary": "#ffffff", "outline-variant": "#c4c6cd", "secondary-fixed": "#e4e2dd", "on-primary-fixed": "#0a1d2d", outline: "#74777d", "inverse-surface": "#303032", "on-primary": "#ffffff", "inverse-on-surface": "#f2f0f2", "surface-variant": "#e4e2e3", "on-tertiary-fixed-variant": "#614018", "on-surface-variant": "#43474c", "surface-container": "#efedef", "secondary-fixed-dim": "#c8c6c2", "on-tertiary": "#ffffff", "on-secondary-container": "#63635f", "surface-container-highest": "#e4e2e3", "primary-fixed": "#d2e4fb", "on-primary-fixed-variant": "#37485b", "on-error-container": "#93000a", "tertiary-fixed": "#ffdcbc", "on-secondary-fixed-variant": "#474744", "surface-container-high": "#e9e7e9", "surface-dim": "#dbd9db", "surface-bright": "#fbf9fa", "surface-tint": "#4f6073", "on-tertiary-fixed": "#2c1700", secondary: "#5f5e5b", "on-surface": "#1b1c1d", "on-tertiary-container": "#cd9f6f", "on-secondary-fixed": "#1b1c19", "tertiary-container": "#56360f", "on-error": "#ffffff", "primary-fixed-dim": "#b6c8df", "surface-container-lowest": "#ffffff", "inverse-primary": "#b6c8df", primary: "#172839", "primary-container": "#2d3e50", surface: "#fbf9fa", "tertiary-fixed-dim": "#efbd8a", "secondary-container": "#e1dfdb", "surface-container-low": "#f5f3f4", "on-primary-container": "#97a9be", tertiary: "#3c2100", "on-background": "#1b1c1d", error: "#ba1a1a"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, spacing: {"margin-desktop": "48px", xs: "4px", gutter: "24px", md: "24px", base: "8px", xl: "64px", "margin-mobile": "16px", sm: "12px", lg: "40px"}, fontFamily: {"headline-lg-mobile": ["Inter"], "label-xs": ["Inter"], "headline-md": ["Inter"], "body-sm": ["Inter"], "body-md": ["Inter"], "headline-sm": ["Inter"], "headline-lg": ["Inter"], headline: ["Inter"], display: ["Inter"], body: ["Inter"], label: ["Inter"]}, fontSize: {"headline-lg-mobile": ["28px", {lineHeight: "1.2", fontWeight: "700"}], "label-xs": ["12px", {lineHeight: "1.2", letterSpacing: "0.02em", fontWeight: "500"}], "headline-md": ["28px", {lineHeight: "1.3", letterSpacing: "-0.01em", fontWeight: "600"}], "body-sm": ["14px", {lineHeight: "1.5", fontWeight: "400"}], "body-md": ["16px", {lineHeight: "1.6", fontWeight: "400"}], "headline-sm": ["20px", {lineHeight: "1.4", fontWeight: "600"}], "headline-lg": ["36px", {lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700"}]}}}};</script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed overflow-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-primary text-on-primary shadow-sm flex justify-between items-center w-full px-margin-desktop py-4">
+<div class="flex items-center gap-8">
+<span class="font-headline-sm text-headline-sm font-bold text-on-primary">OddsLab</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-primary-container font-medium hover:opacity-80 transition-opacity" href="#">Markets</a>
+<a class="text-on-primary-container font-medium hover:opacity-80 transition-opacity" href="#">Learn</a>
+<a class="text-on-primary-container font-medium hover:opacity-80 transition-opacity" href="#">Leaderboard</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined hover:opacity-80 transition-opacity">notifications</button>
+<button class="material-symbols-outlined hover:opacity-80 transition-opacity">account_circle</button>
+</div>
+</header>
+<div class="flex h-screen pt-[64px]">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen p-md space-y-2 bg-surface-container-low border-r border-outline-variant w-64 fixed left-0 top-[64px]">
+<div class="mb-lg px-4 pt-2">
+<h2 class="font-headline-sm text-headline-sm font-bold text-primary">Strategy Terminal</h2>
+<p class="font-label-xs text-label-xs text-secondary">Sophisticated Tier</p>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-xs text-label-xs">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-xs text-label-xs">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3 transition-transform translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-xs text-label-xs">Transactions</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-xs text-label-xs">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pb-lg space-y-1">
+<button class="w-full mb-4 bg-primary text-on-primary py-3 rounded-lg font-bold hover:opacity-90 transition-opacity">
+                    Deposit Funds
+                </button>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-2 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-xs text-label-xs">Help Center</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-2 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-xs text-label-xs">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-64 bg-background min-h-full p-md md:p-margin-desktop overflow-y-auto">
+<div class="max-w-6xl mx-auto">
+<!-- Header Section with Stats -->
+<div class="mb-lg flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Bet History</h1>
+<p class="font-body-md text-secondary mt-1">Review your strategic performance and market outcomes.</p>
+</div>
+<div class="flex gap-gutter overflow-x-auto pb-2 md:pb-0">
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-xl min-w-[140px]">
+<p class="font-label-xs text-secondary uppercase tracking-wider mb-1">Win Rate</p>
+<p class="font-headline-sm text-primary">64.2%</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-xl min-w-[140px]">
+<p class="font-label-xs text-secondary uppercase tracking-wider mb-1">Total P&amp;L</p>
+<p class="font-headline-sm text-[#34d399]">+2,450.00</p>
+</div>
+</div>
+</div>
+<!-- Filters Bar -->
+<div class="flex flex-wrap items-center gap-4 mb-md">
+<div class="relative flex-1 min-w-[200px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg focus:outline-none focus:border-primary transition-colors text-body-sm" placeholder="Search markets or selections..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 border border-outline-variant rounded-lg font-label-xs text-secondary hover:bg-surface-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                            Last 30 Days
+                        </button>
+<button class="px-4 py-2 border border-outline-variant rounded-lg font-label-xs text-secondary hover:bg-surface-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                            Filter
+                        </button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-primary text-on-primary">
+<th class="px-6 py-4 font-label-xs text-label-xs uppercase tracking-widest">Date</th>
+<th class="px-6 py-4 font-label-xs text-label-xs uppercase tracking-widest">Market</th>
+<th class="px-6 py-4 font-label-xs text-label-xs uppercase tracking-widest">Selection</th>
+<th class="px-6 py-4 font-label-xs text-label-xs uppercase tracking-widest">Stake</th>
+<th class="px-6 py-4 font-label-xs text-label-xs uppercase tracking-widest text-center">Outcome</th>
+<th class="px-6 py-4 font-label-xs text-label-xs uppercase tracking-widest text-right">P&amp;L</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1: Won -->
+<tr class="bg-surface hover:bg-surface-container transition-colors">
+<td class="px-6 py-5 font-body-sm text-secondary">Oct 24, 2024 · 14:30</td>
+<td class="px-6 py-5 font-headline-sm text-[16px] text-primary">US Presidential Election 2024</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-primary">Republican Nominee</span>
+<span class="font-label-xs text-secondary">Odds: 1.85</span>
+</div>
+</td>
+<td class="px-6 py-5 font-body-md text-primary">$500.00</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-[#10b981]/10 text-[#059669] font-label-xs font-bold border border-[#10b981]/20">Won</span>
+</td>
+<td class="px-6 py-5 text-right font-body-md font-bold text-[#059669]">+$425.00</td>
+</tr>
+<!-- Row 2: Lost -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors">
+<td class="px-6 py-5 font-body-sm text-secondary">Oct 23, 2024 · 09:15</td>
+<td class="px-6 py-5 font-headline-sm text-[16px] text-primary">Tech Stock Q3 Performance</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-primary">Apple Beats Earnings</span>
+<span class="font-label-xs text-secondary">Odds: 2.10</span>
+</div>
+</td>
+<td class="px-6 py-5 font-body-md text-primary">$250.00</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-[#ef4444]/10 text-[#dc2626] font-label-xs font-bold border border-[#ef4444]/20">Lost</span>
+</td>
+<td class="px-6 py-5 text-right font-body-md font-bold text-[#dc2626]">-$250.00</td>
+</tr>
+<!-- Row 3: Pending -->
+<tr class="bg-surface hover:bg-surface-container transition-colors">
+<td class="px-6 py-5 font-body-sm text-secondary">Oct 22, 2024 · 22:00</td>
+<td class="px-6 py-5 font-headline-sm text-[16px] text-primary">Global Warming Index 2025</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-primary">Over +1.5°C Avg</span>
+<span class="font-label-xs text-secondary">Odds: 3.40</span>
+</div>
+</td>
+<td class="px-6 py-5 font-body-md text-primary">$1,000.00</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-[#f59e0b]/10 text-[#d97706] font-label-xs font-bold border border-[#f59e0b]/20">Pending</span>
+</td>
+<td class="px-6 py-5 text-right font-body-md font-bold text-secondary">--</td>
+</tr>
+<!-- Row 4: Won -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors">
+<td class="px-6 py-5 font-body-sm text-secondary">Oct 21, 2024 · 11:45</td>
+<td class="px-6 py-5 font-headline-sm text-[16px] text-primary">Bitcoin Price EOY</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-primary">Above $75,000</span>
+<span class="font-label-xs text-secondary">Odds: 1.90</span>
+</div>
+</td>
+<td class="px-6 py-5 font-body-md text-primary">$150.00</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-[#10b981]/10 text-[#059669] font-label-xs font-bold border border-[#10b981]/20">Won</span>
+</td>
+<td class="px-6 py-5 text-right font-body-md font-bold text-[#059669]">+$135.00</td>
+</tr>
+<!-- Row 5: Lost -->
+<tr class="bg-surface hover:bg-surface-container transition-colors">
+<td class="px-6 py-5 font-body-sm text-secondary">Oct 20, 2024 · 16:10</td>
+<td class="px-6 py-5 font-headline-sm text-[16px] text-primary">World Cup Qualifier</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-primary">Under 2.5 Goals</span>
+<span class="font-label-xs text-secondary">Odds: 1.70</span>
+</div>
+</td>
+<td class="px-6 py-5 font-body-md text-primary">$400.00</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-[#ef4444]/10 text-[#dc2626] font-label-xs font-bold border border-[#ef4444]/20">Lost</span>
+</td>
+<td class="px-6 py-5 text-right font-body-md font-bold text-[#dc2626]">-$400.00</td>
+</tr>
+<!-- Row 6: Won -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors">
+<td class="px-6 py-5 font-body-sm text-secondary">Oct 19, 2024 · 08:00</td>
+<td class="px-6 py-5 font-headline-sm text-[16px] text-primary">Oscars: Best Picture</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-primary">Indie Feature</span>
+<span class="font-label-xs text-secondary">Odds: 4.50</span>
+</div>
+</td>
+<td class="px-6 py-5 font-body-md text-primary">$100.00</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-[#10b981]/10 text-[#059669] font-label-xs font-bold border border-[#10b981]/20">Won</span>
+</td>
+<td class="px-6 py-5 text-right font-body-md font-bold text-[#059669]">+$350.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 flex items-center justify-between border-t border-outline-variant bg-surface-container-low">
+<span class="font-body-sm text-secondary">Showing 1 to 6 of 128 entries</span>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-variant transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Section -->
+<footer class="mt-xl flex flex-col md:flex-row justify-between items-center gap-md border-t border-outline-variant py-xl w-full">
+<div class="flex flex-col gap-1">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">OddsLab</span>
+<p class="font-body-sm text-secondary">© 2024 OddsLab Prediction Systems. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap gap-md justify-center">
+<a class="text-secondary hover:text-primary font-body-sm transition-colors" href="#">Terms of Service</a>
+<a class="text-secondary hover:text-primary font-body-sm transition-colors" href="#">Privacy Policy</a>
+<a class="text-secondary hover:text-primary font-body-sm transition-colors" href="#">Risk Disclosure</a>
+<a class="text-secondary hover:text-primary font-body-sm transition-colors" href="#">Community Guidelines</a>
+</div>
+</footer>
+</div>
+</main>
+</div>
+<!-- Mobile Bottom Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-primary text-on-primary flex justify-around items-center py-3 border-t border-primary-container z-50">
+<button class="flex flex-col items-center gap-1 opacity-60">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px]">Dashboard</span>
+</button>
+<button class="flex flex-col items-center gap-1 opacity-60">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-[10px]">Portfolio</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-primary font-bold">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px]">History</span>
+</button>
+<button class="flex flex-col items-center gap-1 opacity-60">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px]">Settings</span>
+</button>
+</nav>
+<script>
+        // Simple Micro-interaction for table rows
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('click', () => {
+                if (row.parentElement.tagName === 'TBODY') {
+                    row.classList.add('scale-[0.99]');
+                    setTimeout(() => {
+                        row.classList.remove('scale-[0.99]');
+                    }, 100);
+                }
+            });
+        });
+
+        // Search highlight mock logic
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                if (text.includes(term)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body></html>

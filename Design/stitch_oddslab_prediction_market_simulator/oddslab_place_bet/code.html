@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OddsLab | Confirm Your Bet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-overlay {
+            backdrop-filter: blur(8px);
+            background-color: rgba(27, 28, 29, 0.4);
+        }
+        .subtle-well {
+            background-color: #f5f3f4;
+            border: 1px solid #c4c6cd;
+        }
+        .transition-transform-scale:active {
+            transform: scale(0.95);
+        }
+    </style>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {background: "#fbf9fa", "error-container": "#ffdad6", "on-secondary": "#ffffff", "outline-variant": "#c4c6cd", "secondary-fixed": "#e4e2dd", "on-primary-fixed": "#0a1d2d", outline: "#74777d", "inverse-surface": "#303032", "on-primary": "#ffffff", "inverse-on-surface": "#f2f0f2", "surface-variant": "#e4e2e3", "on-tertiary-fixed-variant": "#614018", "on-surface-variant": "#43474c", "surface-container": "#efedef", "secondary-fixed-dim": "#c8c6c2", "on-tertiary": "#ffffff", "on-secondary-container": "#63635f", "surface-container-highest": "#e4e2e3", "primary-fixed": "#d2e4fb", "on-primary-fixed-variant": "#37485b", "on-error-container": "#93000a", "tertiary-fixed": "#ffdcbc", "on-secondary-fixed-variant": "#474744", "surface-container-high": "#e9e7e9", "surface-dim": "#dbd9db", "surface-bright": "#fbf9fa", "surface-tint": "#4f6073", "on-tertiary-fixed": "#2c1700", secondary: "#5f5e5b", "on-surface": "#1b1c1d", "on-tertiary-container": "#cd9f6f", "on-secondary-fixed": "#1b1c19", "tertiary-container": "#56360f", "on-error": "#ffffff", "primary-fixed-dim": "#b6c8df", "surface-container-lowest": "#ffffff", "inverse-primary": "#b6c8df", primary: "#172839", "primary-container": "#2d3e50", surface: "#fbf9fa", "tertiary-fixed-dim": "#efbd8a", "secondary-container": "#e1dfdb", "surface-container-low": "#f5f3f4", "on-primary-container": "#97a9be", tertiary: "#3c2100", "on-background": "#1b1c1d", error: "#ba1a1a", success: "#10b981", "on-success": "#ffffff"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, spacing: {"margin-desktop": "48px", xs: "4px", gutter: "24px", md: "24px", base: "8px", xl: "64px", "margin-mobile": "16px", sm: "12px", lg: "40px"}, fontFamily: {"headline-lg-mobile": ["Inter"], "label-xs": ["Inter"], "headline-md": ["Inter"], "body-sm": ["Inter"], "body-md": ["Inter"], "headline-sm": ["Inter"], "headline-lg": ["Inter"], headline: ["Inter"], display: ["Inter"], body: ["Inter"], label: ["Inter"]}, fontSize: {"headline-lg-mobile": ["28px", {lineHeight: "1.2", fontWeight: "700"}], "label-xs": ["12px", {lineHeight: "1.2", letterSpacing: "0.02em", fontWeight: "500"}], "headline-md": ["28px", {lineHeight: "1.3", letterSpacing: "-0.01em", fontWeight: "600"}], "body-sm": ["14px", {lineHeight: "1.5", fontWeight: "400"}], "body-md": ["16px", {lineHeight: "1.6", fontWeight: "400"}], "headline-sm": ["20px", {lineHeight: "1.4", fontWeight: "600"}], "headline-lg": ["36px", {lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700"}]}}}};</script>
+</head>
+<body class="bg-background font-body-md text-on-background overflow-hidden">
+<!-- Blurred Background Content (Market Detail Simulation) -->
+<div class="fixed inset-0 w-full h-full overflow-y-auto filter blur-sm pointer-events-none select-none">
+<!-- TopNavBar Mock -->
+<header class="bg-primary text-on-primary flex justify-between items-center w-full px-margin-desktop py-4 shadow-sm">
+<div class="font-headline-sm text-headline-sm font-bold text-on-primary">OddsLab</div>
+<div class="flex gap-lg">
+<span class="font-body-md text-on-primary font-bold border-b-2 border-on-primary pb-1">Markets</span>
+<span class="font-body-md text-on-primary-container font-medium">Learn</span>
+<span class="font-body-md text-on-primary-container font-medium">Leaderboard</span>
+</div>
+<div class="flex gap-sm">
+<span class="material-symbols-outlined">notifications</span>
+<span class="material-symbols-outlined">account_circle</span>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-margin-desktop py-xl grid grid-cols-12 gap-lg">
+<!-- Sidebar -->
+<div class="col-span-3">
+<div class="space-y-sm">
+<div class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-xs text-label-xs">Dashboard</span>
+</div>
+</div>
+</div>
+<!-- Content -->
+<div class="col-span-9 space-y-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+<h1 class="font-headline-lg text-headline-lg text-primary">Market Detail</h1>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl shadow-sm">
+<div class="flex justify-between items-start mb-md">
+<h2 class="font-headline-md text-headline-md max-w-2xl">Will the Fed raise interest rates by June 2024?</h2>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-xs">Economics</span>
+</div>
+<div class="h-64 bg-surface-container-low rounded-lg mb-md flex items-end p-md">
+<!-- Chart placeholder -->
+<div class="w-full h-32 flex items-end gap-xs">
+<div class="flex-1 bg-primary/20 h-1/2"></div>
+<div class="flex-1 bg-primary/20 h-2/3"></div>
+<div class="flex-1 bg-primary/20 h-3/4"></div>
+<div class="flex-1 bg-primary h-full"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-margin-mobile glass-overlay">
+<!-- Modal Card -->
+<div class="w-full max-w-md bg-surface-container-lowest rounded-xl shadow-2xl border border-outline-variant overflow-hidden animate-in fade-in zoom-in duration-300">
+<!-- Modal Header -->
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-primary">Confirm Your Bet</h3>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Content -->
+<div class="p-lg space-y-md">
+<!-- Market Summary -->
+<div class="space-y-xs">
+<span class="text-label-xs font-label-xs uppercase tracking-wider text-on-surface-variant">Market</span>
+<p class="font-body-md text-on-surface font-semibold">Interest rates rise by June</p>
+</div>
+<!-- Bento Style Details Grid -->
+<div class="grid grid-cols-2 gap-md">
+<div class="subtle-well p-md rounded-lg flex flex-col gap-xs">
+<span class="text-label-xs font-label-xs text-on-surface-variant">Selection</span>
+<div class="flex items-center gap-xs text-success">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span class="font-bold">YES</span>
+</div>
+</div>
+<div class="subtle-well p-md rounded-lg flex flex-col gap-xs">
+<span class="text-label-xs font-label-xs text-on-surface-variant">Odds / Price</span>
+<span class="font-bold text-primary">0.65</span>
+</div>
+<div class="subtle-well p-md rounded-lg flex flex-col gap-xs col-span-2">
+<div class="flex justify-between items-center">
+<span class="text-label-xs font-label-xs text-on-surface-variant">Wager Amount</span>
+<span class="text-label-xs font-label-xs text-on-surface-variant">Balance: 2,450</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-headline-sm text-headline-sm text-primary">100</span>
+<span class="font-body-sm text-secondary">Play Tokens</span>
+</div>
+</div>
+</div>
+<!-- Potential Payout -->
+<div class="bg-primary text-on-primary p-md rounded-lg flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-label-xs font-label-xs opacity-80">Potential Payout</span>
+<span class="font-headline-sm text-headline-sm font-bold text-tertiary-fixed">153.85</span>
+</div>
+<span class="material-symbols-outlined text-[32px] opacity-20">trending_up</span>
+</div>
+<!-- Fees -->
+<div class="flex justify-between items-center px-xs pt-xs">
+<span class="text-body-sm text-on-surface-variant">Protocol Fees</span>
+<span class="text-body-sm font-medium">0.5 Play Tokens</span>
+</div>
+<div class="flex justify-between items-center px-xs border-t border-outline-variant pt-sm">
+<span class="text-body-md font-bold text-primary">Total Commitment</span>
+<span class="text-body-md font-bold text-primary">100.5 Play Tokens</span>
+</div>
+</div>
+<!-- Modal Actions -->
+<div class="px-lg py-lg bg-surface-container-low flex flex-col gap-sm">
+<button class="w-full bg-success text-on-success py-4 rounded-xl font-headline-sm text-headline-sm transition-transform-scale shadow-sm hover:brightness-105">
+                    Confirm Bet
+                </button>
+<button class="w-full py-2 text-on-surface-variant font-medium hover:text-primary transition-colors text-center font-body-sm">
+                    Cancel &amp; Return
+                </button>
+</div>
+</div>
+</div>
+<!-- Decorative Corner Element -->
+<div class="fixed bottom-0 right-0 p-lg pointer-events-none opacity-10">
+<div class="w-64 h-64 border-4 border-primary rounded-full -mr-32 -mb-32"></div>
+</div>
+<script>
+        // Simple micro-interaction for button press
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.transform = 'scale(0.98)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.transform = 'scale(1)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>
